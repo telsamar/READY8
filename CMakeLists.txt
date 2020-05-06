@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.16)
+project(server)
+
+set(CMAKE_CXX_STANDARD 17)
+find_package(Boost REQUIRED COMPONENTS filesystem system log log_setup)
+include_directories(/usr/local/include)
+link_directories(/usr/local/lib)
+add_executable(server main.cpp source.cpp header.h source.cpp header.h)
+target_link_libraries(server ${Boost_LIBRARIES})
+set(CMAKE_CXX_FLAGS " -g -Wall -DBOOST_LOG_DYN_LINK")
